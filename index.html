@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Qbike</title>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=PBy6GABlqGTIKOtbEstLMfDe"></script>
+    <script type="text/javascript" src="./src/js/qrcode.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <router-view></router-view>
+</div>
+<script src="dist/main.js"></script>
+<script>
+    var store = {
+        state:{
+            menus: [
+                {
+                    desc:"用户管理",
+                    iconClass:"usersIocn",
+                    expand:false,
+                    selected:0,
+                    url:"/home/userinfo/c",
+                    secM:[
+                        {
+                            url:"/home/userinfo/c",
+                            desc:"用户信息管理"
+                        },
+                        {
+                            url:"/home/userinfo/c1",
+                            desc:"用户认证信息管理"
+                        }
+                    ]
+                },
+                {
+                    desc:"车辆管理",
+                    iconClass:"bikesIcon",
+                    expand:false,
+                    selected:0,
+                    url:"/home/biketype/bikeMgr",
+                    secM:[
+                        {
+                            url:"/home/biketype/bikeMgr",
+                            desc:"车辆管理"
+                        },
+//                        {
+//                            url:"/home/biketype/b2",
+//                            desc:"车辆使用记录管理"
+//                        },
+                        {
+                            url:"/home/biketype/bikeTypeMgr",
+                            desc:"车辆类型管理"
+                        },
+                        {
+                            url:"/home/biketype/b4",
+                            desc:"费用管理"
+                        }
+                    ]
+                },
+                {
+                    desc:"订单管理",
+                    iconClass:"recordsIcon",
+                    expand:false,
+                    selected:0,
+                    url:"/home/recorddetail",
+                    secM:[
+                        {
+                            url:"/home/recorddetail",
+                            desc:"骑行订单"
+                        }
+                    ]
+                },
+
+                {
+                    desc:"信用管理",
+                    iconClass:"creditIcon",
+                    expand:false,
+                    selected:0,
+                    url:"/home/creditmanage",
+                    secM:[
+                        {
+                            url:"/home/creditmanage",
+                            desc:"信用奖励管理"
+                        }
+                    ]
+                },
+                {
+                    desc:"财务管理",
+                    iconClass:"accountIcon",
+                    expand:false,
+                    selected:0,
+                    url:"/home/accountmanage/accountMgr",
+                    secM:[
+                        {
+                            url:"/home/accountmanage/accountMgr",
+                            desc:"账户管理"
+                        },
+                        {
+                            url:"/home/accountmanage/payOrderMgr",
+                            desc:"支付订单管理"
+                        },
+                        {
+                            url:"/home/accountmanage/cashFlowMgr",
+                            desc:"账户流水管理"
+                        }
+                    ]
+                },
+                {
+                    desc:"数据支撑",
+                    iconClass:"dataIcon",
+                    expand:false,
+                    selected:0,
+                    url:"/home/datasupport/d1",
+                    secM:[
+                        {
+                            url:"/home/datasupport/d1",
+                            desc:"监控"
+                        },
+                        {
+                            url:"/home/datasupport/d2",
+                            desc:"调度"
+                        },
+                        {
+                            url:"/home/datasupport/d3",
+                            desc:"业务分析"
+                        }
+                    ]
+                },
+                {
+                    desc:"权限管理",
+                    iconClass:"authorityIcon",
+                    expand:false,
+                    selected:0,
+                    url:"/home/authority",
+                    secM:[
+                        {
+                            url:"/home/authority",
+                            desc:"权限管理",
+                            selected:true
+                        }
+                    ]
+                }
+            ]
+        },
+        updateMenus(item){
+            console.log(item)
+            var index = item.$index;
+            this.state.menus[index] =  item;
+        }
+    }
+    /**
+     *删除数组中的元素
+     *var emp = ['abs','dsf','sdf','fd']
+     *emp.remove('fd');
+     */
+    Array.prototype.indexOf = function(val) {
+        for (var i = 0; i < this.length; i++) {
+            if (this[i] == val) return i;
+        }
+        return -1;
+    };
+    Array.prototype.remove = function(val) {
+        var index = this.indexOf(val);
+        if (index > -1) {
+            this.splice(index, 1);
+        }
+    };
+</script>
+</body>
+</html>
